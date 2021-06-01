@@ -12,14 +12,13 @@ EEC201 - University of California, Davis. Winter Quarter 2021
 
 
 ---
-
 ### A. Introduction 
 
 The purpose of the project is to build an automatic speaker recognition system. Features were extracted from input speech [files](https://github.com/worzs/CoviDSP/tree/main/src/Train), by applying th Fourier Transform to the signal, and then obtaining the Mel frequeny cepstrum coefficients (MFCC). The characteristics of an audio signal vary over time. Therefore, applying Windowing and the Short Time Fourier Transform is convenient to locate the regions with useful information, and isolate the useless sectors. Signals left are the features that are used to train and to evaluate each test speaker.
 
-After the feature extraction, we are ready to calculate the centroids using the LBG algorithm. They are the codewords of the codebook for each speaker. Finally, we test the system by identifying the speaker in a different dataset. 
+After the feature extraction, we are ready to calculate the centroids using the LBG algorithm. They are the codewords of the codebook for each speaker. Finally, we test the system by identifying the speaker in a different dataset. We achieved 100% of accuracy in several tests, even with reduced features (clusters, filter bank size, window size). One of the most important steps of the project is the data normalization in the preprocessing stage. If we skip it, our accuracy rate is reduced and only 5 or 6 speakers are recognized among the 8 from the test dataset. The separation of the clusters is the key, because when they are close enough, the system returns false positives. 
 
-TODO: add flow diagrams
+For more details about the concepts of signal processing and clustering, we attach the project guide [here](https://github.com/worzs/CoviDSP/blob/main/src/doc/speaker_recognition2021.pdf). You can see the video of the project [here](https://youtu.be/fBg70CVwH4Q). Slides [here](https://github.com/worzs/CoviDSP/blob/main/src/doc/CoviDSP%20Final%20Project%20-%20Slides.pdf).
 ---
 ### B. Data preprocessing
 The input signal contains 11 different individual speaking the word "Zero." Each of the sampling rate is 12.5 KHz.
